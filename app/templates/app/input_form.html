@@ -10,11 +10,10 @@
         {{ form.as_p }}
         <button type="submit">Submit</button>
     </form>
-
     <h3>Submitted Data:</h3>
     <ul>
-        {% for item in submitted_data %}
-            <li>{{ item.topic }}</li>
+        {% for original, encoded in submitted_data %}
+            <li>Original: {{ original }} | Encoded: {{ encoded }}</li>
         {% empty %}
             <li>No data submitted yet.</li>
         {% endfor %}
