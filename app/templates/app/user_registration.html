@@ -1,0 +1,19 @@
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+</form>
+{% if user %}
+    <h3>Welcome back, {{ user.name }}!</h3>
+    <p>Your selected encoding method: {{ user.region }}</p>
+{% endif %}
+{% if encoded_texts %}
+    <h3>Your Previously Encoded Inputs:</h3>
+    <ul>
+        {% for encoded_text in encoded_texts %}
+            <li>{{ encoded_text.original_text }} -> {{ encoded_text.encoded_text }} (Encoded using: {{ user.region }})</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No previous inputs found.</p>
+{% endif %}

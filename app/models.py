@@ -1,7 +1,10 @@
 from django.db import models
 
-class InputData(models.Model):
-    topic = models.CharField(max_length=100)
+class User(models.Model):
+    name = models.CharField(max_length=100)
+    region = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.topic
+class EncodedText(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    original_text = models.TextField()
+    encoded_text = models.TextField()

@@ -1,6 +1,6 @@
 from django.urls import path
-from . import views
+from .views import user_registration, input_text
 
 urlpatterns = [
-    path('', views.stuff, name='submit'),
+    path('input_text/<int:user_id>/', input_text, name='input_text'),
 ]
